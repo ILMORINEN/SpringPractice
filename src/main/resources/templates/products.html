@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Orders application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<navigation class="bg-secondary">
+    <ul class="nav nav-tabs bg-light">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/orders">Orders</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active text-dark" href="/products">Products</a>
+        </li>
+    </ul>
+</navigation>
+<div th:switch="${products.size}" xmlns:th="http://www.thymeleaf.org">
+    <h2 th:case="0">Products is empty</h2>
+    <div th:case="*">
+        <h2 class="m-5">Products</h2>
+        <table class="table m-5">
+            <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <a th:href="@{/editProduct/{id}(id=${product.id})}"
+                       class="btn btn-default btn-sm">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/deleteProduct/{id}(id=${product.id})}"
+                       class="btn btn-default btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a class="btn btn-default bg-secondary"
+           href="/showAddProductForm">Add a new product
+        </a>
+    </p>
+</div>
+<footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div>
+            <p>From Morin and Maryushkin with Love <3</p>
+        </div>
+    </section>
+</footer>
+</body>
+</html>

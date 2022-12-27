@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Orders application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<navigation class="bg-secondary">
+    <ul class="nav nav-tabs bg-light">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active text-dark" href="/orders">Orders</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/products">Products</a>
+        </li>
+    </ul>
+</navigation>
+<div th:switch="${orders.size}" xmlns:th="http://www.thymeleaf.org">
+    <h2 th:case="0">Orders is empty</h2>
+    <div th:case="*">
+        <h2 class="m-5">Orders</h2>
+        <table class="table m-5">
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Products</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.date}"></td>
+                <td>
+                    <a th:href="@{/orderedProducts/{id}(id=${order.id})}"
+                       class="btn btn-default btn-sm">
+                        Products
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/editOrder/{id}(id=${order.id})}"
+                       class="btn btn-default btn-sm">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/deleteOrder/{id}(id=${order.id})}"
+                       class="btn btn-default btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a class="btn btn-default bg-secondary"
+          href="/orders/addForm">Add a new order
+        </a>
+    </p>
+</div>
+<footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div>
+            <p>From Morin and Maryushkin with Love <3</p>
+        </div>
+    </section>
+</footer>
+</body>
+</html>

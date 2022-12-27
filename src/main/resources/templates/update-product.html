@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Circus application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<navigation class="bg-secondary">
+    <ul class="nav nav-tabs bg-light">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/clowns">Clowns</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active text-dark" href="/viewers">Viewers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/tickets">Tickets</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/showTask1Form">Task 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/showTask2Form">Task 2</a>
+        </li>
+    </ul>
+</navigation>
+<form action="#" xmlns:th="http://www.thymeleaf.org"
+      th:action="@{/updateViewer/{id}(id=${viewer.viewerId})}"
+      th:object="${viewer}"
+      method="post"
+      class="container m-5">
+    <div class="form-group row">
+        <label class="col-sm" for="name">Name</label>
+        <input class="col-sm" type="text" th:field="*{name}" id="name" placeholder="Name">
+    </div>
+    <div class="form-group row">
+        <label class="col-sm" for="age">Age</label>
+        <input class="col-sm" type="text" th:field="*{age}" id="age" placeholder="Age">
+    </div>
+    <input type="submit" value="Update viewer" class="btn btn-default bg-secondary">
+</form>
+<footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div>
+            <p>Developed by Rotkina Darya and Bashev Konstantin. Bitbucket:</p>
+        </div>
+        <div>
+            <a href="https://bitbucket.org/k260200/circusapp/src/master/">https://bitbucket.org/k260200/circusapp/src/master/</a>
+        </div>
+    </section>
+</footer>
+</body>
+</html>

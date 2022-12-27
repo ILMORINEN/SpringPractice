@@ -25,17 +25,14 @@ public class OrderController {
 
     @GetMapping("/orders/addForm")
     public String addOrder(Model model) {
-
+        model.addAttribute("order", new Order());
         return "add-order";
     }
 
     @PostMapping("/orders/addOrder")
-    public void addOrderToDb(Model model) {
-        Order order = new Order();
-        order.setDate(LocalDate.now());
-
-        orderRepository.
-
+    public String addOrderToDb(Order order, Model model) {
+        orderRepository.save(order);
+        return "redirect:/orders";
     }
 
 

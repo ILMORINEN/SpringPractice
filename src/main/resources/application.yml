@@ -3,16 +3,16 @@ spring:
     baselineOnMigrate: true
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/course
+    url: jdbc:postgresql://containers-us-west-64.railway.app:7530/course
     username: postgres
-    password: 123456
+    password: SZao7PtcmAWlnTlA9UuZ
 flyway:
 
-  url: jdbc:postgresql://localhost:5432/course
+  url: jdbc:postgresql://containers-us-west-64.railway.app:7530/course
 
   user: postgres
 
-  password: 123456
+  password: SZao7PtcmAWlnTlA9UuZ
 
   enabled: true
 

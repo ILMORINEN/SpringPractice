@@ -13,7 +13,9 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     @Column(name = "orderdate")
     private LocalDate date;
 

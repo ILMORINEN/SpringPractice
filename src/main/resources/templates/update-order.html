@@ -30,7 +30,7 @@
     </ul>
 </navigation>
 <form action="#" xmlns:th="http://www.thymeleaf.org"
-      th:action="@{/updateClown/{id}(id=${clown.clownId})}"
+      th:action="@{/orders/updateClown/{id}(id=${clown.clownId})}"
       th:object="${clown}"
       method="post"
       class="container m-5">

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Orders application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<navigation class="bg-secondary">
+  <ul class="nav nav-tabs bg-light">
+    <li class="nav-item">
+      <a class="nav-link text-dark" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active text-dark" href="/orders">Orders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" href="/products">Products</a>
+    </li>
+  </ul>
+</navigation>
+<a class="fw-weight-light reset-color text-black-50 m-5" style="font-size:40px; font-weight: 200" th:href="@{/orders/orderedProducts/} + ${order.id}">Back</a>
+<form action="#"
+      xmlns:th="http://www.thymeleaf.org"
+      th:action="@{/orders/orderedProducts/} + ${order.id} + @{/edit/} + ${orderproduct.id}"
+      th:object="${orderproduct}"
+      method="post"
+      class="container m-5">
+  <div class="form-group row">
+    <label for="product" class="col-sm">Product</label>
+    <div class="col-sm" id="product">
+      <div th:if="${products != null and not #lists.isEmpty(products)}">
+        <select th:field="*{product}">
+          <option th:each="dropDownItem : ${products}"
+                  th:value="${dropDownItem.id}"
+                  th:text="${dropDownItem.name}"
+                  th:selected="${dropDownItem.equals(orderproduct.product)}"/>
+        </select>
+      </div>
+      <div th:if="${products == null or #lists.isEmpty(products)}">
+        <div>"No products were found, please create some first"</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm" for="amount">Amount</label>
+    <input class="col-sm" type="text" th:field="*{amount}" id="amount" placeholder="">
+  </div>
+  <input type="submit" value="Update Order" class="btn btn-default bg-secondary">
+</form>
+<footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <div>
+      <p>From Morin and Maryushkin with Love <3</p>
+    </div>
+  </section>
+</footer>
+</body>
+</html>

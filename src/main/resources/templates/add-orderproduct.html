@@ -21,22 +21,38 @@
     </ul>
 </navigation>
 <form action="#"
-      th:action="@{/products/addProduct}"
-      th:object="${product}"
+      th:action="@{/orders/orderedProducts/} + ${order.id} + @{/add}"
+      th:object="${orderProduct}"
       method="post"
       xmlns:th="http://www.thymeleaf.org"
       class="container m-5">
     <div class="form-group row">
-        <label class="col-sm" for="name">Name</label>
-        <input class="col-sm" type="text" th:field="*{name}" id="name" placeholder="Name">
+        <label for="order" class="col-sm">Order ID</label>
+        <div class="col-sm" id="order">
+            <select th:field="*{order}">
+                <option th:value="${order.id}"
+                        th:text="${order.id}"/>
+            </select>
+        </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm" for="description">Description</label>
-        <input class="col-sm" type="text" th:field="*{description}" id="description" placeholder="Description">
+        <label for="product" class="col-sm">Product</label>
+        <div class="col-sm" id="product">
+            <div th:if="${products != null and not #lists.isEmpty(products)}">
+                <select th:field="*{product}">
+                    <option th:each="dropDownItem : ${products}"
+                            th:value="${dropDownItem.id}"
+                            th:text="${dropDownItem.name}"/>
+                </select>
+            </div>
+            <div th:if="${products == null or #lists.isEmpty(products)}">
+                <div>"No products were found, please create some first"</div>
+            </div>
+        </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm" for="price">Price</label>
-        <input class="col-sm" type="text" th:field="*{price}" id="price" placeholder="Price">
+        <label class="col-sm" for="amount">Amount</label>
+        <input class="col-sm" type="text" th:field="*{amount}" id="amount" placeholder="">
     </div>
     <input type="submit" value="Add Product" class="btn btn-default bg-secondary">
 </form>

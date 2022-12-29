@@ -21,7 +21,7 @@
     </ul>
 </navigation>
 <div th:switch="${orders.size}" xmlns:th="http://www.thymeleaf.org">
-    <h2 th:case="0">Orders is empty</h2>
+    <h2 th:case="0">Orders are empty</h2>
     <div th:case="*">
         <h2 class="m-5">Orders</h2>
         <table class="table m-5">
@@ -39,19 +39,19 @@
                 <td th:text="${order.id}"></td>
                 <td th:text="${order.date}"></td>
                 <td>
-                    <a th:href="@{/orderedProducts/{id}(id=${order.id})}"
+                    <a th:href="@{/orders/orderedProducts/{id}(id=${order.id})}"
                        class="btn btn-default btn-sm">
                         Products
                     </a>
                 </td>
                 <td>
-                    <a th:href="@{/editOrder/{id}(id=${order.id})}"
+                    <a th:href="@{/orders/editForm/{id}(id=${order.id})}"
                        class="btn btn-default btn-sm">
                         Edit
                     </a>
                 </td>
                 <td>
-                    <a th:href="@{/deleteOrder/{id}(id=${order.id})}"
+                    <a th:href="@{/orders/delete/{id}(id=${order.id})}"
                        class="btn btn-default btn-sm">
                         Delete
                     </a>

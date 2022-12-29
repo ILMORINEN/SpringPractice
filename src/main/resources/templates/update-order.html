@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Circus application</title>
+    <title>Orders application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,48 +13,29 @@
             <a class="nav-link text-dark" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active text-dark" href="/clowns">Clowns</a>
+            <a class="nav-link active text-dark" href="/orders">Orders</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/viewers">Viewers</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/tickets">Tickets</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/showTask1Form">Task 1</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/showTask2Form">Task 2</a>
+            <a class="nav-link text-dark" href="/products">Products</a>
         </li>
     </ul>
 </navigation>
-<form action="#" xmlns:th="http://www.thymeleaf.org"
-      th:action="@{/orders/updateClown/{id}(id=${clown.clownId})}"
-      th:object="${clown}"
+<form action="#"
+      xmlns:th="http://www.thymeleaf.org"
+      th:action="@{/orders/edit/{id}(id=${order.id})}"
+      th:object="${order}"
       method="post"
       class="container m-5">
     <div class="form-group row">
-        <label class="col-sm" for="name">Name</label>
-        <input class="col-sm" type="text" th:field="*{name}" id="name" placeholder="Name">
+        <label class="col-sm" for="date">Date</label>
+        <input class="col-sm" type="date" th:field="*{date}" id="date" placeholder="Date">
     </div>
-    <div class="form-group row">
-        <label class="col-sm" for="age">Age</label>
-        <input class="col-sm" type="text" th:field="*{age}" id="age" placeholder="Age">
-    </div>
-    <div class="form-group row">
-        <label class="col-sm" for="favoriteJoke">Favorite joke</label>
-        <input class="col-sm" type="text" th:field="*{favoriteJoke}" id="favoriteJoke" placeholder="Favorite joke">
-    </div>
-    <input type="submit" value="Update clown" class="btn btn-default bg-secondary">
+    <input type="submit" value="Update Order" class="btn btn-default bg-secondary">
 </form>
 <footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div>
-            <p>Developed by Rotkina Darya and Bashev Konstantin. Bitbucket:</p>
-        </div>
-        <div>
-            <a href="https://bitbucket.org/k260200/circusapp/src/master/">https://bitbucket.org/k260200/circusapp/src/master/</a>
+            <p>From Morin and Maryushkin with Love <3</p>
         </div>
     </section>
 </footer>

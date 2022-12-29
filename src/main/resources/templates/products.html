@@ -42,13 +42,13 @@
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.price}"></td>
                 <td>
-                    <a th:href="@{/editProduct/{id}(id=${product.id})}"
+                    <a th:href="@{products/editForm/{id}(id=${product.id})}"
                        class="btn btn-default btn-sm">
                         Edit
                     </a>
                 </td>
                 <td>
-                    <a th:href="@{/deleteProduct/{id}(id=${product.id})}"
+                    <a th:href="@{products/delete/{id}(id=${product.id})}"
                        class="btn btn-default btn-sm">
                         Delete
                     </a>
@@ -59,7 +59,7 @@
     </div>
     <p>
         <a class="btn btn-default bg-secondary"
-           href="/products/addProductForm">Add a new product
+           href="/products/addForm">Add a new product
         </a>
     </p>
 </div>

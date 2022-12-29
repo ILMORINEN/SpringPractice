@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Circus application</title>
+    <title>Orders application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,44 +13,38 @@
             <a class="nav-link text-dark" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/clowns">Clowns</a>
+            <a class="nav-link text-dark" href="/orders">Orders</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active text-dark" href="/viewers">Viewers</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/tickets">Tickets</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/showTask1Form">Task 1</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/showTask2Form">Task 2</a>
+            <a class="nav-link active text-dark" href="/products">Products</a>
         </li>
     </ul>
 </navigation>
-<form action="#" xmlns:th="http://www.thymeleaf.org"
-      th:action="@{/products/updateViewer/{id}(id=${viewer.viewerId})}"
-      th:object="${viewer}"
+<a class="fw-weight-light reset-color text-black-50 m-5" style="font-size:40px; font-weight: 200" th:href="@{/products/}">Back</a>
+<form action="#"
+      th:action="@{/products/edit/{id}(id=${product.id})}"
+      th:object="${product}"
       method="post"
+      xmlns:th="http://www.thymeleaf.org"
       class="container m-5">
     <div class="form-group row">
         <label class="col-sm" for="name">Name</label>
-        <input class="col-sm" type="text" th:field="*{name}" id="name" placeholder="Name">
+        <input class="col-sm" type="text" th:field="*{name}" id="name" placeholder="Name" th:value="${product.name}">
     </div>
     <div class="form-group row">
-        <label class="col-sm" for="age">Age</label>
-        <input class="col-sm" type="text" th:field="*{age}" id="age" placeholder="Age">
+        <label class="col-sm" for="description">Description</label>
+        <input class="col-sm" type="text" th:field="*{description}" id="description" placeholder="Description" th:value="${product.description}">
     </div>
-    <input type="submit" value="Update viewer" class="btn btn-default bg-secondary">
+    <div class="form-group row">
+        <label class="col-sm" for="price">Price</label>
+        <input class="col-sm" type="text" th:field="*{price}" id="price" placeholder="Price" th:value="${product.price}">
+    </div>
+    <input type="submit" value="Update Product" class="btn btn-default bg-secondary">
 </form>
 <footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div>
-            <p>Developed by Rotkina Darya and Bashev Konstantin. Bitbucket:</p>
-        </div>
-        <div>
-            <a href="https://bitbucket.org/k260200/circusapp/src/master/">https://bitbucket.org/k260200/circusapp/src/master/</a>
+            <p>From Morin and Maryushkin with Love <3</p>
         </div>
     </section>
 </footer>

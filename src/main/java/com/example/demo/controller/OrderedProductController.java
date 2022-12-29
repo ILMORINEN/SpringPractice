@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -49,6 +51,15 @@ public class OrderedProductController {
         order.getOrderProducts().add(newOrderProduct);
         orderRepository.save(order);
         return "redirect:/orders/orderedProducts/"+ id.toString();
+    }
+    @GetMapping("detailForm/{opid}")
+    public String detailOrderedProductForm(@PathVariable("id") Long orderId, @PathVariable("opid") Long orderedProductId, Model model){
+        OrderProduct orderProduct = orderProductRepository.findById(orderedProductId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid order product Id:" + orderedProductId));
+        Set<Product> products = new HashSet<>();
+                products.add(orderProduct.getProduct());
+        model.addAttribute("products", products);
+        return "products";
     }
     @GetMapping("editForm/{opid}")
     public String editOrderedProductForm(@PathVariable("id") Long orderId, @PathVariable("opid") Long orderedProductId, Model model){

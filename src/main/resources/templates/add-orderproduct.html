@@ -20,6 +20,7 @@
         </li>
     </ul>
 </navigation>
+<a class="fw-weight-light reset-color text-black-50 m-5" style="font-size:40px; font-weight: 200" th:href="@{/orders/orderedProducts/} + ${order.id}">Back</a>
 <form action="#"
       th:action="@{/orders/orderedProducts/} + ${order.id} + @{/add}"
       th:object="${orderProduct}"

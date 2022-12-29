@@ -13,15 +13,16 @@
             <a class="nav-link text-dark" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active text-dark" href="/orders">Orders</a>
+            <a class="nav-link text-dark" href="/orders">Orders</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/products">Products</a>
+            <a class="nav-link active text-dark" href="/products">Products</a>
         </li>
     </ul>
 </navigation>
+<a class="fw-weight-light reset-color text-black-50 m-5" style="font-size:40px; font-weight: 200" th:href="@{/products/}">Back</a>
 <form action="#"
-      th:action="@{/products/addProduct}"
+      th:action="@{/products/add}"
       th:object="${product}"
       method="post"
       xmlns:th="http://www.thymeleaf.org"

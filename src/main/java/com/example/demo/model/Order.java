@@ -15,7 +15,7 @@ import java.util.Set;
 @Table(name = "purchase_order")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

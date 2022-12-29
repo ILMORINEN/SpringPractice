@@ -23,6 +23,7 @@
 <div th:switch="${orderproducts.size}" xmlns:th="http://www.thymeleaf.org">
   <h2 th:case="0">Products are empty</h2>
   <div th:case="*">
+    <a class="fw-weight-light reset-color text-black-50 m-5" style="font-size:40px; font-weight: 200" th:href="@{/orders/}">Back</a>
     <h2 class="m-5">Ordered products for order №<span th:text="${order.id}"></span></h2>
     <table class="table m-5">
       <thead>
@@ -41,7 +42,7 @@
         <td th:text="${orderproduct.product.name}"></td>
         <td th:text="${orderproduct.amount}"></td>
         <td>
-          <a th:href="@{/products/{id}(id=${orderproduct.product.id})}"
+          <a th:href="@{/orders/orderedProducts/} + ${order.id} + @{/detailForm/{id}(id=${orderproduct.id})}"
              class="btn btn-default btn-sm">
             Details
           </a>

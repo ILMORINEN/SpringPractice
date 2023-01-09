@@ -28,6 +28,7 @@ public class OrderController {
     @GetMapping("/addForm")
     public String addOrderForm(Model model) {
         model.addAttribute("order", new Order());
+        model.addAttribute("products", productRepository.findAll());
         return "add-order";
     }
 

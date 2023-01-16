@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Order;
 import com.example.demo.model.Product;
+import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequestMapping("products")
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private OrderRepository orderRepository;
     @GetMapping
     public String products(Model model){
         model.addAttribute("products", productRepository.findAll());
@@ -60,5 +64,12 @@ public class ProductController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid order Id:" + id));
         productRepository.delete(product);
         return "redirect:/products";
+    }
+
+    @GetMapping("/history/{id}")
+    public String checkHistory(Model model, @PathVariable Long id) {
+        model.addAttribute("orders", orderRepository.findProductHistory(id));
+        model.addAttribute("amount",productRepository.getSumOfProduct(id));
+        return "producthistory";
     }
 }

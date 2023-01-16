@@ -33,6 +33,7 @@
                 <th>Price</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>History</th>
             </tr>
             </thead>
             <tbody>
@@ -51,6 +52,12 @@
                     <a th:href="@{products/delete/{id}(id=${product.id})}"
                        class="btn btn-default btn-sm">
                         Delete
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{products/history/{id}(id=${product.id})}"
+                       class="btn btn-default btn-sm">
+                        History
                     </a>
                 </td>
             </tr>
